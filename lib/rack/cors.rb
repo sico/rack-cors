@@ -177,7 +177,7 @@ module Rack
           r = Result.new
           r.preflight = false
           r.hit = true
-          env[ENV_KEY] = r
+          env[ENV_KEY] = r.to_s
         end
 
         def self.miss(env, reason)
@@ -185,14 +185,14 @@ module Rack
           r.preflight = false
           r.hit = false
           r.miss_reason = reason
-          env[ENV_KEY] = r
+          env[ENV_KEY] = r.to_s
         end
 
         def self.preflight_hit(env)
           r = Result.new
           r.preflight = true
           r.hit = true
-          env[ENV_KEY] = r
+          env[ENV_KEY] = r.to_s
         end
 
         def self.preflight_miss(env, reason)
@@ -200,7 +200,7 @@ module Rack
           r.preflight = true
           r.hit = false
           r.miss_reason = reason
-          env[ENV_KEY] = r
+          env[ENV_KEY] = r.to_s
         end
 
         def append_header(headers)
